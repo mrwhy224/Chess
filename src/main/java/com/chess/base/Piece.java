@@ -1,5 +1,7 @@
 package com.chess.base;
 
+import java.util.ArrayList;
+
 public abstract class Piece {
     private PiecesGroup Group;
     private Game GameObj;
@@ -13,7 +15,7 @@ public abstract class Piece {
         GameObj = gameObj;
         PieceValue = pieceValue;
     }
-    //public abstract ArrayList<AllEnums.Move> AvailableMoves();
+    public abstract ArrayList<Objects.Move> AvailableMoves();
     public int getPieceValue() {
         return PieceValue;
     }
