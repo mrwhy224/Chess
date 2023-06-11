@@ -2,11 +2,10 @@ package com.chess.base;
 
 public class Game {
 
-    //PiecesGroup WhitePieces;
-    //PiecesGroup BlackPieces;
 
-    //PiecesColor CurrentTurn;
-
+    public PiecesGroup WhitePieces;
+    public PiecesGroup BlackPieces;
+    public Objects.PiecesColor CurrentTurn;
 
     /*
     public void DefaultSetup() {
