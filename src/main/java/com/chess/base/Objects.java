@@ -9,4 +9,54 @@ public class Objects {
         White,
         Black
     }
+    public static enum ChessPieces{
+        King,
+        Queen,
+        Rook,
+        Knight,
+        Bishop,
+        Pawn,
+    }
+    public static class Position{
+        private int x;
+        private int y;
+        public Position(int xp, int yp)
+        {
+            x = xp;
+            y = yp;
+        }
+        public void setX(int x) {
+            this.x = x;
+        }
+        public void setY(int y) {
+            this.y = y;
+        }
+        public int getX() {
+            return x;
+        }
+        public int getY() {
+            return y;
+        }
+        public String getChessHouseName() {
+            switch (this.getX()) {
+                case 0:
+                    return "A"+(this.getY()+1);
+                case 1:
+                    return "B"+(this.getY()+1);
+                case 2:
+                    return "C"+(this.getY()+1);
+                case 3:
+                    return "D"+(this.getY()+1);
+                case 4:
+                    return "E"+(this.getY()+1);
+                case 5:
+                    return "F"+(this.getY()+1);
+                case 6:
+                    return "G"+(this.getY()+1);
+                case 7:
+                    return "H"+(this.getY()+1);
+            }
+            return null;
+        }
+    }
 }
