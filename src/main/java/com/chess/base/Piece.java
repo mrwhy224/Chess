@@ -32,19 +32,10 @@ public abstract class Piece {
     public boolean isFirstMove() {
         return FirstMove;
     }
-    public void setGameObj(Game gameObj) {
-        GameObj = gameObj;
-    }
     public void setFirstMove(boolean firstMove) {
         FirstMove = firstMove;
     }
-    protected void setGroup(PiecesGroup group) {
-        Group = group;
-    }
     public void setPiecePosition(Objects.Position piecePosition) {
         PiecePosition = piecePosition;
-    }
-    protected void setPieceType(Objects.ChessPieces pieceType) {
-        PieceType = pieceType;
     }
 }

@@ -12,8 +12,6 @@ public class PiecesGroup {
         Color = color;
     }
     public boolean AddPieceToGroup(Piece pic, Game game) {
-        pic.setGroup(this);
-        pic.setGameObj(game);
        return Pieces.add(pic);
     }
     public boolean RemovePieceFromGroup(Piece pic) {

@@ -59,4 +59,29 @@ public class Objects {
             return null;
         }
     }
+    public static class Move {
+        private Position origin;
+        private Position destination;
+        private boolean attack;
+        private Piece piece;
+        public Move(Piece pic, Position org, Position des, boolean att)
+        {
+            piece = pic;
+            origin = org;
+            destination = des;
+            attack = att;
+        }
+        public Piece getPiece() {
+            return piece;
+        }
+        public Position getOrigin() {
+            return origin;
+        }
+        public Position getDestination() {
+            return destination;
+        }
+        public boolean isAttack() {
+            return attack;
+        }
+    }
 }
