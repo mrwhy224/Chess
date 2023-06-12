@@ -21,7 +21,11 @@ public class Knight extends Piece {
         ArrayList<Objects.Move> availableMoves = new ArrayList<>();
         for (int i = 0; i< possibleMovement.length; i++)
         {
-            Objects.Move move = new Objects.Move(this ,this.getPiecePosition(),new Objects.Position(this.getPiecePosition().getX()+ possibleMovement[i].getX(),this.getPiecePosition().getY()+ possibleMovement[i].getY()),false);
+            boolean att = false;
+            Objects.Position newPosition = new Objects.Position(this.getPiecePosition().getX()+ possibleMovement[i].getX(),this.getPiecePosition().getY()+ possibleMovement[i].getY());
+            if (!java.util.Objects.isNull(this.getGameObj().getPieceByPosition(newPosition)) && this.getGameObj().getPieceByPosition(newPosition).getGroup() != this.getGroup())
+                att = true;
+            Objects.Move move = new Objects.Move(this ,this.getPiecePosition(), newPosition,att);
             if(this.getGameObj().CheckMove(move))
                 availableMoves.add(move);
         }
