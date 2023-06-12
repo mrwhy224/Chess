@@ -20,10 +20,10 @@ public class Objects {
     public static class Position{
         private int x;
         private int y;
-        public Position(int xp, int yp)
+        public Position(int x, int y)
         {
-            x = xp;
-            y = yp;
+            this.x = x;
+            this.y = y;
         }
         public void setX(int x) {
             this.x = x;
