@@ -16,6 +16,10 @@ public class Game {
     }
     */
     public boolean CheckMove(Objects.Move move) {
+        if(move.getDestination() == move.getOrigin()) // there is no movement
+            return false;
+        if(move.getOrigin() != move.getPiece().getPiecePosition()) // origin position must be based on current piece position
+            return false;
         // toDo: check logically piece movement
         return true;
     }
