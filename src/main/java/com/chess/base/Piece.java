@@ -34,10 +34,12 @@ public abstract class Piece {
     public boolean isFirstMove() {
         return FirstMove;
     }
-    public void setFirstMove(boolean firstMove) {
+    public Piece setFirstMove(boolean firstMove) {
         FirstMove = firstMove;
+        return this;
     }
-    public void setPiecePosition(Objects.Position piecePosition) {
+    public Piece setPiecePosition(Objects.Position piecePosition) {
         PiecePosition = piecePosition;
+        return this;
     }
 }
