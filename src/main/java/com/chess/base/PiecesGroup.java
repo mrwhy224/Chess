@@ -2,16 +2,16 @@ package com.chess.base;
 
 import java.util.ArrayList;
 
-public class PiecesGroup {
+public abstract class PiecesGroup {
     public Objects.PiecesColor Color;
     private ArrayList<Piece> Pieces;
+    public PiecesGroup(Objects.PiecesColor color) {
+        Color = color;
+    }
     public Objects.PiecesColor getColor() {
         return Color;
     }
-    public void setColor(Objects.PiecesColor color) {
-        Color = color;
-    }
-    public boolean AddPieceToGroup(Piece pic, Game game) {
+    public boolean AddPieceToGroup(Piece pic) {
        return Pieces.add(pic);
     }
     public boolean RemovePieceFromGroup(Piece pic) {
