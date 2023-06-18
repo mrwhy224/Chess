@@ -5,8 +5,10 @@ import java.util.ArrayList;
 public abstract class PiecesGroup {
     public Objects.PiecesColor Color;
     private ArrayList<Piece> Pieces;
-    public PiecesGroup(Objects.PiecesColor color) {
-        Color = color;
+    private Game game;
+    public PiecesGroup(Objects.PiecesColor color, Game game) {
+        this.Color = color;
+        this.game = game;
     }
     public Objects.PiecesColor getColor() {
         return Color;
@@ -19,5 +21,9 @@ public abstract class PiecesGroup {
     }
     public ArrayList<Piece> getPieces() {
         return Pieces;
+    }
+
+    public Game getGame() {
+        return game;
     }
 }

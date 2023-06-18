@@ -1,7 +1,7 @@
 package com.chess.base;
 
 public class BlackPieceGroup extends PiecesGroup{
-    public BlackPieceGroup() {
-        super(Objects.PiecesColor.Black);
+    public BlackPieceGroup(Game game) {
+        super(Objects.PiecesColor.Black, game);
     }
 }
