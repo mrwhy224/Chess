@@ -8,30 +8,32 @@ public class Pawn extends Piece {
     public Pawn(PiecesGroup group, Game gameObj) {
         super(Objects.ChessPieces.Pawn, group, gameObj, 1);
     }
-    public ArrayList<Objects.Move> AvailableMoves() {
+    public ArrayList<Objects.Move> AvailableMoves(boolean isCheckMateAllowed) {
+
         ArrayList<Objects.Move> availableMoves = new ArrayList<>();
+
         for (int j = 1; j < (this.isFirstMove()?3:2) ; j++) {
             if (this.getGroup().getColor() == Objects.PiecesColor.Black)
-                j = -j;
-            Objects.Move move;
-            Objects.Position newPosition;
+                j = -j; // The step is reversed, considering that white pieces go to houses with higher index and black pieces go to houses with lower index
 
-            newPosition = new Objects.Position(this.getPiecePosition().getX(), this.getPiecePosition().getY() + j);
-            move = new Objects.Move(this, this.getPiecePosition(), newPosition, false);
-            if (this.getGameObj().CheckMove(move))
+
+            Objects.Move move = new Objects.Move(this, this.getPiecePosition(), new Objects.Position(this.getPiecePosition().getX(), this.getPiecePosition().getY() + j), false);
+            if (this.getGameObj().CheckMove(move,isCheckMateAllowed))
                 availableMoves.add(move);
 
-            if(abs(j) == 1) {
-                newPosition = new Objects.Position(this.getPiecePosition().getX() + 1, this.getPiecePosition().getY() + j);
-                move = new Objects.Move(this, this.getPiecePosition(), newPosition, true);
-                if (this.getGameObj().CheckMove(move))
+            if(abs(j) == 1) { // Checks if the soldier can attack or not
+                move = new Objects.Move(this, this.getPiecePosition(), new Objects.Position(this.getPiecePosition().getX() + 1, this.getPiecePosition().getY() + j), true);
+                if (this.getGameObj().CheckMove(move,isCheckMateAllowed))
                     availableMoves.add(move);
-                newPosition = new Objects.Position(this.getPiecePosition().getX() - 1, this.getPiecePosition().getY() + j);
-                move = new Objects.Move(this, this.getPiecePosition(), newPosition, true);
-                if (this.getGameObj().CheckMove(move))
+
+                move = new Objects.Move(this, this.getPiecePosition(), new Objects.Position(this.getPiecePosition().getX() - 1, this.getPiecePosition().getY() + j), true);
+                if (this.getGameObj().CheckMove(move,isCheckMateAllowed))
                     availableMoves.add(move);
             }
         }
         return availableMoves;
+    }
+    public Piece createCopy(PiecesGroup group, Game gameObj) {
+        return new Pawn(group,gameObj).setFirstMove(this.isFirstMove()).setPiecePosition(this.getPiecePosition());
     }
 }

@@ -13,18 +13,26 @@ public abstract class PiecesGroup {
     public Objects.PiecesColor getColor() {
         return Color;
     }
-    public ArrayList<Objects.Move> getPieceGroupAvailableMoves() {
+    public ArrayList<Objects.Move> getPieceGroupAvailableMoves(boolean isCheckMateAllowed) {
         ArrayList<Objects.Move> moves = new ArrayList<>();
         for (Piece pic:getPieces())
-            moves.addAll(pic.AvailableMoves());
+            moves.addAll(pic.AvailableMoves(isCheckMateAllowed));
         return moves;
     }
-    public abstract boolean isMate();
-    public boolean CheckMate()
-    {
-        return CheckMate() && getPieceGroupAvailableMoves().isEmpty();
+    public boolean isMate() {
+        for (Objects.Move mov:OppositeSide().getPieceGroupAvailableMoves(false)) // call func with "true" arg to avoid infinity loop between isMate and CheckMove
+            if (mov.getDestination().equals(getKing().getPiecePosition()))
+                return true;
+        return false;
     }
 
+
+    public abstract PiecesGroup OppositeSide();
+
+    public boolean CheckMate()
+    {
+        return isMate() && getKing().AvailableMoves(true).isEmpty();
+    }
 
     public Piece getKing()
     {
@@ -39,6 +47,7 @@ public abstract class PiecesGroup {
         return pics;
     }
     public boolean AddPieceToGroup(Piece pic) {
+        game.setPieceByPosition(pic.getPiecePosition(), pic);
        return Pieces.add(pic);
     }
     public boolean RemovePieceFromGroup(Piece pic) {
