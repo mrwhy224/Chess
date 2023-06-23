@@ -13,6 +13,12 @@ public abstract class PiecesGroup {
     public Objects.PiecesColor getColor() {
         return Color;
     }
+    public ArrayList<Objects.Move> getPieceGroupAvailableMoves() {
+        ArrayList<Objects.Move> moves = new ArrayList<>();
+        for (Piece pic:getPieces())
+            moves.addAll(pic.AvailableMoves());
+        return moves;
+    }
     public boolean AddPieceToGroup(Piece pic) {
        return Pieces.add(pic);
     }
