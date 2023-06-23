@@ -7,7 +7,7 @@ import com.chess.base.Game;
 public class Main {
     public static void main(String[] args) {
 
-        Game gmae = new Game();
+        Game game = new Game();
         //game.DefaultSetup();
     }
 }
