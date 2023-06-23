@@ -19,6 +19,25 @@ public abstract class PiecesGroup {
             moves.addAll(pic.AvailableMoves());
         return moves;
     }
+    public abstract boolean isMate();
+    public boolean CheckMate()
+    {
+        return CheckMate() && getPieceGroupAvailableMoves().isEmpty();
+    }
+
+
+    public Piece getKing()
+    {
+        return getCustomPieces(Objects.ChessPieces.King).get(0);
+    }
+    public ArrayList<Piece> getCustomPieces(Objects.ChessPieces type)
+    {
+        ArrayList<Piece> pics = new ArrayList<>();
+        for (Piece pic:getPieces())
+            if (pic.getPieceType() == type)
+                pics.add(pic);
+        return pics;
+    }
     public boolean AddPieceToGroup(Piece pic) {
        return Pieces.add(pic);
     }

@@ -25,6 +25,16 @@ public class Objects {
             this.x = x;
             this.y = y;
         }
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this)
+                return true;
+            if (!(obj instanceof Position))
+                return false;
+            Position p = (Position) obj;
+            return this.getX() == p.getX() && this.getY() == p.getY();
+        }
+
         public void setX(int x) {
             this.x = x;
         }
