@@ -50,13 +50,13 @@ public class Game {
         BlackPieces.AddPieceToGroup(new Bishop(BlackPieces, this).setPiecePosition(new Objects.Position(4,7)).setFirstMove(true));
 
     }
-    public Game createCopy() {
+    public Game getCopy() {
         Game game = new Game();
         game.CurrentTurn = this.CurrentTurn;
         for (Piece pic:this.WhitePieces.getPieces())
-            game.WhitePieces.AddPieceToGroup(pic.createCopy(game.WhitePieces,game));
+            game.WhitePieces.AddPieceToGroup(pic.getCopy(game.WhitePieces,game));
         for (Piece pic:this.BlackPieces.getPieces())
-            game.BlackPieces.AddPieceToGroup(pic.createCopy(game.BlackPieces,game));
+            game.BlackPieces.AddPieceToGroup(pic.getCopy(game.BlackPieces,game));
         return game;
     }
     /*
@@ -95,7 +95,7 @@ public class Game {
                 if (!java.util.Objects.isNull(getPieceByPosition(new Objects.Position(min(move.getDestination().getX(), move.getOrigin().getX())+z, min(move.getDestination().getY(), move.getOrigin().getY())+z))))
                     return false;
         // It checks whether that moves, its movement causes itself to be matted
-        return !isCheckMateAllowed || !createCopy().ApplyMove(move).getCurrentTurn().OppositeSide().isMate();
+        return !isCheckMateAllowed || !getCopy().ApplyMove(move).getCurrentTurn().OppositeSide().isMate();
     }
     public Game ApplyMove(Objects.Move move) {
         if (CheckMove(move,false))

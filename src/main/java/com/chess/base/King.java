@@ -21,7 +21,7 @@ public class King extends Piece {
             }
         return availableMoves;
     }
-    public Piece createCopy(PiecesGroup group, Game gameObj) {
+    public Piece getCopy(PiecesGroup group, Game gameObj) {
         return new King(group,gameObj).setFirstMove(this.isFirstMove()).setPiecePosition(this.getPiecePosition());
     }
 }

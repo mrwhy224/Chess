@@ -16,7 +16,7 @@ public abstract class Piece {
         PieceValue = pieceValue;
     }
     public abstract ArrayList<Objects.Move> AvailableMoves(boolean isCheckMateAllowed);
-    public abstract Piece createCopy(PiecesGroup Group, Game GameObj);
+    public abstract Piece getCopy(PiecesGroup Group, Game GameObj);
     public int getPieceValue() {
         return PieceValue;
     }

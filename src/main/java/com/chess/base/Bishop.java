@@ -26,7 +26,7 @@ public class Bishop extends Piece {
     }
 
 
-    public Piece createCopy(PiecesGroup group, Game gameObj) {
+    public Piece getCopy(PiecesGroup group, Game gameObj) {
         return new Bishop(group,gameObj).setFirstMove(this.isFirstMove()).setPiecePosition(this.getPiecePosition());
     }
 }

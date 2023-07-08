@@ -33,7 +33,7 @@ public class Pawn extends Piece {
         }
         return availableMoves;
     }
-    public Piece createCopy(PiecesGroup group, Game gameObj) {
+    public Piece getCopy(PiecesGroup group, Game gameObj) {
         return new Pawn(group,gameObj).setFirstMove(this.isFirstMove()).setPiecePosition(this.getPiecePosition());
     }
 }
